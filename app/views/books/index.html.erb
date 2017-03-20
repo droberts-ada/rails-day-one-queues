@@ -1,0 +1,7 @@
+<h2>List of Books</h2>
+
+<ul>
+  <% @books.each do |book| %>
+    <li><%= book[:title] %></li>
+  <% end %>
+</ul>
