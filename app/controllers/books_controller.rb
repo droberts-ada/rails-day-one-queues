@@ -14,8 +14,19 @@ class BooksController < ApplicationController
   end
 
   def show
-    id = params[:id].to_i
-    @book = Book.find(id)
+    @book = Book.find(params[:id])
+  end
+
+  def edit
+    @book = Book.find(params[:id])
+  end
+
+  def update
+    book = Book.find(params[:id])
+    book.update_attributes(book_params)
+    book.save
+
+    redirect_to book_path(book)
   end
 
 private
