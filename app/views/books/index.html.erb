@@ -9,5 +9,7 @@
   <% end %>
 </ul>
 
-<%= link_to "go back to the home page", welcome_path %>
+<%= link_to "go back to the home page", welcome_path, alt: "this is a link!", class: "link", id: "go-home-link" %>
 <%= link_to "Add a new book", new_book_path %>
+
+<%= link_to image_tag("cat.jpg", alt: "adorable cat", height: "300px"), "http://www.google.com" %>
