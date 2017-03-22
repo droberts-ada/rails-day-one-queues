@@ -7,11 +7,9 @@ class BooksController < ApplicationController
   end
 
   def create
-    puts ">>>> DPR: In BooksController#create"
+    Book.create(book_params)
 
-    book_data = book_params
-    puts book_data.to_hash
-    Book.create(book_data)
+    redirect_to books_path
   end
 
   def show
