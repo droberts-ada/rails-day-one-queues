@@ -1,12 +1,9 @@
-<form action="/books" method="post" accept-charset="utf-8">
-  <!-- SPECIAL INPUT TO ALLOW RAILS TO USE THIS FORM -->
-  <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+<%= form_for @book do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
 
-  <label for="title">Title</label>
-  <input type="text" name="book[title]" value="" id="title">
+  <%= f.label :author %>
+  <%= f.text_field :author %>
 
-  <label for="author">Author</label>
-  <input type="text" name="book[author]" value="" id="author">
-
-  <input type="submit" value="Submit The Book">
-</form>
+  <%= f.submit value: "Add Book To Collection" %>
+<% end %>
