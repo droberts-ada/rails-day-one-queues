@@ -1,9 +1,9 @@
 <h2>List of Books</h2>
 
 <ul>
-  <% @books.each_with_index do |book, id| %>
+  <% @books.each do |book| %>
     <li>
-      <%= link_to book[:title], book_path(id) %>
+      <%= link_to book[:title], book_path(book.id) %>
     </li>
   <% end %>
 </ul>
