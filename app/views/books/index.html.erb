@@ -5,6 +5,7 @@
     <li>
       <%= link_to book.title, book_path(book.id) %>
       Age: <%= book.age.nil? ? "unknown" : book.age %>
+      <%= link_to "Edit", edit_book_path(book) %>
     </li>
   <% end %>
 </ul>
