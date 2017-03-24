@@ -6,6 +6,9 @@
       <%= link_to book.title, book_path(book.id) %>
       Age: <%= book.age.nil? ? "unknown" : book.age %>
       <%= link_to "Edit", edit_book_path(book) %>
+      <!-- Want a button instead of a link? Change link_to to button_to -->
+      <%= link_to "Delete", book_path(book), method: :delete,
+            data: { confirm: "Are you sure you want to delete book #{book.title}" } %>
     </li>
   <% end %>
 </ul>

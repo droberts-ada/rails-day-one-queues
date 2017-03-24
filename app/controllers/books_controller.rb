@@ -29,6 +29,17 @@ class BooksController < ApplicationController
     redirect_to book_path(book)
   end
 
+  def destroy
+    book = Book.find(params[:id])
+    book.destroy
+
+    redirect_to books_path
+
+    # Another valid but perhaps less clean option for reloading the list of books
+    # @books = Book.all
+    # render :index
+  end
+
 private
   def book_params
     return params.require(:book).permit(:author, :title, :synopsis, :publication_year, :publication_city)
