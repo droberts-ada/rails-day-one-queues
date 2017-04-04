@@ -8,9 +8,14 @@ class BooksController < ApplicationController
   end
 
   def create
-    Book.create(book_params)
+    @book = Book.new(book_params)
 
-    redirect_to books_path
+    if @book.save
+      redirect_to books_path
+    else
+      # We know the validations didn't pass
+      render :new
+    end
   end
 
   def show
