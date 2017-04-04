@@ -40,6 +40,10 @@ class BooksController < ApplicationController
     # render :index
   end
 
+  def mark_read
+    puts ">>> DPR: Marking a book as read!"
+  end
+
 private
   def book_params
     return params.require(:book).permit(:author, :title, :synopsis, :publication_year, :publication_city)
