@@ -2,9 +2,22 @@
 require "test_helper"
 
 describe Book do
-  let(:book) { Book.new }
+  describe "validations" do
+    it "Can be created with all attributes" do
+      a = Author.create!(name: "test author")
+      Book.create!(title: 'test title', author: a)
+      # result = book.valid?
+      # result.must_equal true
+    end
 
-  it "must be valid" do
-    value(album).must_be :valid?
+    it "Requires a title" do
+      book = Book.new
+      result = book.valid?
+      result.must_equal false
+
+      # Check that the validation we're testing
+      # did actually fail
+      book.errors.messages.must_include :title
+    end
   end
 end
