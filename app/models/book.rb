@@ -1,7 +1,6 @@
 class Book < ApplicationRecord
-  validates :title, presence: true, length: { in: 5..25 }
-  validates :author, presence: { message: "bad author bad authr"}
-
+  belongs_to :author
+  validates :title, presence: true, uniqueness: true
 
   def age
     return nil if publication_year.nil?
