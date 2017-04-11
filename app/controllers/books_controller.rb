@@ -14,12 +14,15 @@ class BooksController < ApplicationController
       redirect_to books_path
     else
       # We know the validations didn't pass
-      render :new
+      render :new, status: :bad_request
     end
   end
 
   def show
-    @book = Book.find(params[:id])
+    @book = Book.find_by(id: params[:id])
+    if @book.nil?
+      head :not_found
+    end
   end
 
   def edit
@@ -51,6 +54,6 @@ class BooksController < ApplicationController
 
 private
   def book_params
-    return params.require(:book).permit(:author, :title, :synopsis, :publication_year, :publication_city)
+    return params.require(:book).permit(:author_id, :title, :synopsis, :publication_year, :publication_city)
   end
 end
